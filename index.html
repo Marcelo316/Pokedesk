@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/loading.css">
+  </head>
+  <body>
+    <span id="error-msg" class="invisivel">Ocorreu algum erro ao requisitar os pokemons.</span>
+    <div class="loader" id="loading-main"></div>
+    <!-- <table>
+      <tbody id="#tabela-pokemons">
+        <tr>
+          <td class="card">
+            <p>ID: 12</p>
+            <p>Name:Butterfree </p>
+            <p>Base experience: 178</p>
+            <p>Height: 11</p>
+            <p>Is default: Yes</p>
+            <p>Order: 16</p>
+            <p>Weight: 320</p>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
+    <ul id="pokemon-list">
+    </ul>
+    <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

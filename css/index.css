@@ -1,0 +1,12 @@
+.card {
+  width: 20%;
+  background-color:powderblue;
+  text-align: center;
+  padding: 20px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.invisivel {
+  display: none;
+}
