@@ -6,13 +6,6 @@ function getPokemonPage(pageSize, offset){
   }
 };
 
-var pokemonList = document.querySelector("#pokemon-list");
-pokemonList.addEventListener("click",function(event){
-  if(event.target.tagName == "LI"){
-    // Go to a new page to show specific pokemon
-  }
-});
-
 window.addEventListener("scroll", () =>{
   //logic for infinite scroll goes here
 });

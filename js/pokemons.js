@@ -32,6 +32,43 @@
 
 // Requests
 
+function requestPokemon(id,loadingId,errorMsgId,errorClassName) {
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("GET",`https://pokeapi.co/api/v2/pokemon/${id}`);
+
+  var errorMsg = document.querySelector(errorMsgId);
+  var loadingDiv = document.querySelector(loadingId);
+  
+  console.log("Request pokemon running");
+
+  xhr.addEventListener("load", function(){
+    loadingDiv.classList.add(errorClassName);
+    if(xhr.status == 200) {
+      console.log("entrei no status 200")
+      errorMsg.classList.add(errorClassName);
+
+      const resposta = xhr.responseText;
+      const jsonPokemon = JSON.parse(resposta);
+      console.log(jsonPokemon)
+      const pokemon = pokemonFromJSON(jsonPokemon);
+
+      console.log(pokemon);
+
+      return pokemon;
+    } else {
+      console.log("não entrei no status 200")
+      errorMsg.classList.remove(errorClassName);
+    }
+
+  });
+}
+
+function newGetPokemon(id,displayPokemon){
+  let pokemon = requestPokemon(id,"#loading-main","#error-msg","invisivel");
+  addPokemonToList(pokemon);
+}
+
 function getPokemon(id) {
   var xhr = new XMLHttpRequest();
 
@@ -68,7 +105,6 @@ function pokemonFromJSON(entirePokemon){
     id: entirePokemon.id,
     types: entirePokemon.types
   };
-  console.log(pokemon);
   return pokemon;
 }
 
@@ -83,6 +119,8 @@ function generateTypesContent(types){
 
 function createPokemonLi(pokemon){
   console.log(pokemon);
+  var anchorPokemon = document.createElement("a");
+  anchorPokemon.href = `pokemon/pokemon.html?${pokemon.id}`;
   var liPokemon = document.createElement("li");
   liPokemon.classList.add("card");
   const conteudoTr =
@@ -92,10 +130,12 @@ function createPokemonLi(pokemon){
   <p>Types: ${generateTypesContent(pokemon.types)} </.p>
   `
   liPokemon.innerHTML = conteudoTr;
-  return liPokemon;
+  anchorPokemon.appendChild(liPokemon);
+  return anchorPokemon;
 }
 
 function addPokemonToList(pokemon){
   var listaPokemons = document.querySelector("#pokemon-list");
   listaPokemons.appendChild(createPokemonLi(pokemon));
 }
+
