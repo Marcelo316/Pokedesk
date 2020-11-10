@@ -3,23 +3,60 @@
   <head>
     <meta charset="utf-8">
     <title>Pokemon tal</title>
-    <link rel="stylesheet" href="./css/types-color.css">
     <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/types-color.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/loading.css">
     <link rel="stylesheet" href="../css/hider.css">
   </head>
   <body>
+
+    <header>
+      <h1>Pokédesk</h1>
+    </header>
+
     <div class="loader" id="loading-main"></div>
-    <p id="error-msg" class="invisivel">Oops! pokémon não achado. Se acredita que não deveria estar vendo isso, por favor reporte a alguém.</p>
+    <p id="error-msg" class="invisivel">Oops! ocorreu algum problema. Tente novamente.</p>
     <div id="pokemon-container">
-      <img id="image" src=""></img>
-      <p id="id"></p>
-      <p id="name"></p>
-      <p id="weight"></p>
-      <p id="height"></p>
-      <p id="types"></p>
-      <p id="description"></p>
+      <div class="info-basico">
+        <img id="image" src=""></img>
+        <p id="id"></p>
+        <p id="name"></p>
+      </div>
+      <div class="info-detalhes">
+        <table>
+          <thead>
+            <tr colspan=2><h2>Detalhes</h2></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="info-line">
+                <p class="info-descriptor">Peso:</p>
+              </td>
+              <td><p id="weight"></p></td>
+            </tr>
+            <tr>
+              <td class="info-line">
+                <p class="info-descriptor">Altura:</p>
+              </td>
+              <td><p id="height"></p></td>
+            </tr>
+            <tr>
+              <td class="info-line">
+                <p class="info-descriptor">Tipos:</p>
+              </td>
+              <td><p id="types"></p></td>
+            </tr>
+            <tr>
+              <td class="info-line">
+                <p class="info-descriptor">Descrição:</p>
+              </td>
+              <td><p id="description"></p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <script src="../js/pokemons.js"></script>
     <script src="../js/detailed-pokemon.js"></script>

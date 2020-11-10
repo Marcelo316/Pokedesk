@@ -130,6 +130,8 @@ function completePokemonFromJSON(entirePokemon){
   return pokemon;
 }
 
+// HTML Creation
+
 function generateTypesContent(types){
   let batches = ``;
   types.forEach(type => {
@@ -157,8 +159,6 @@ function getIcon(iconName){
 function capitalizeFirstLetter(word){
   return word.charAt(0).toUpperCase() + word.slice(1); 
 }
-
-// HTML Creation
 
 // Cria li que exibe informações simples do pokemon e linka para nova página
 function createSimplePokemonLi(pokemon){
