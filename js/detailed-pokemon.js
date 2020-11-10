@@ -1,5 +1,7 @@
 function getDetailedPokemonForPage(){
-    let id = location.search.substring(1);
+    let idString = window.location.search;
+    const urlParams = new URLSearchParams(idString);
+    let id = parseInt(urlParams.get('id'));
     getPokemon(id,displayCompletePokemon);
 }
 

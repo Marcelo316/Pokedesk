@@ -163,22 +163,28 @@ function capitalizeFirstLetter(word){
 // Cria li que exibe informações simples do pokemon e linka para nova página
 function createSimplePokemonLi(pokemon){
   var anchorPokemon = document.createElement("a");
-  anchorPokemon.href = `pokemon/detailed-pokemon.html?${pokemon.id}`;
   var liPokemon = document.createElement("li");
+  anchorPokemon.href = `pokemon/detailed-pokemon.html?id=${pokemon.id}`;
   liPokemon.classList.add("pokemon");
   liPokemon.classList.add("card");
   liPokemon.id = `pokemon${pokemon.id}`;
   const conteudoTr =
   `
-  <p class="identif">#${pokemon.id}</p><p class="nome identif">${pokemon.name}</p>
-  <img src="${pokemon.image}"></img>
-  <div class="batch-container">
-    ${generateTypesContent(pokemon.types)}
+  <div class="info-esquerda">
+    <p class="info-id">#${pokemon.id}</p>
+    <p class="info-nome">${pokemon.name}</p>
+    <div class="batch-container">
+      ${generateTypesContent(pokemon.types)}
+    </div>
   </div>
+  <div class="info-direita">
+    <img src="${pokemon.image}"></img>
+  </div>
+  
   `
-  anchorPokemon.innerHTML = conteudoTr;
-  liPokemon.appendChild(anchorPokemon);
-  return liPokemon;
+  liPokemon.innerHTML = conteudoTr;
+  anchorPokemon.appendChild(liPokemon);
+  return anchorPokemon;
 }
 
 // popula container que exibe informações completas do pokemon
