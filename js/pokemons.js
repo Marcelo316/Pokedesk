@@ -30,6 +30,8 @@
 
 //-----------------------------------------------------------------------------------
 
+// Dois tipos de exibição de Pokemon - Simples e Completa
+
 // Requests
 
 function requestPokemon(id,loadingId,errorMsgId,errorClassName) {
@@ -39,25 +41,19 @@ function requestPokemon(id,loadingId,errorMsgId,errorClassName) {
 
   var errorMsg = document.querySelector(errorMsgId);
   var loadingDiv = document.querySelector(loadingId);
-  
-  console.log("Request pokemon running");
 
   xhr.addEventListener("load", function(){
     loadingDiv.classList.add(errorClassName);
     if(xhr.status == 200) {
-      console.log("entrei no status 200")
       errorMsg.classList.add(errorClassName);
 
       const resposta = xhr.responseText;
       const jsonPokemon = JSON.parse(resposta);
-      console.log(jsonPokemon)
       const pokemon = pokemonFromJSON(jsonPokemon);
 
-      console.log(pokemon);
-
       return pokemon;
+
     } else {
-      console.log("não entrei no status 200")
       errorMsg.classList.remove(errorClassName);
     }
 
@@ -69,7 +65,7 @@ function newGetPokemon(id,displayPokemon){
   addPokemonToList(pokemon);
 }
 
-function getPokemon(id) {
+function getPokemon(id,displayPokemon) {
   var xhr = new XMLHttpRequest();
 
   xhr.open("GET",`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -84,9 +80,8 @@ function getPokemon(id) {
 
       const resposta = xhr.responseText;
       const jsonPokemon = JSON.parse(resposta);
-      const pokemon = pokemonFromJSON(jsonPokemon);
 
-      addPokemonToList(pokemon);
+      displayPokemon(jsonPokemon);
     } else {
       errorMsg.classList.remove("invisivel");
     }
@@ -95,10 +90,34 @@ function getPokemon(id) {
 
   xhr.send();
 }
+
+// Exibe pokemons simples em lista de id=="pokemon-list"
+function displaySimplePokemon(pokemon){
+  var simplePokemon = simplePokemonFromJSON(pokemon);
+  var pokemons = document.getElementById("pokemon-list");
+  pokemons.appendChild(createSimplePokemonLi(simplePokemon));
+}
+
+// Exibe pokemons completos em div de id=="pokemon-container"
+function displayCompletePokemon(pokemon){
+  var completePokemon = completePokemonFromJSON(pokemon)
+  var container = document.getElementById("pokemon-container");
+  container.innerHTML = createCompletePokemonInfo(completePokemon);
+}
   
 // Conversion 
 
-function pokemonFromJSON(entirePokemon){
+function simplePokemonFromJSON(entirePokemon){
+  const pokemon = {
+    name: entirePokemon.name,
+    image: entirePokemon.sprites.front_default,
+    id: entirePokemon.id,
+    types: entirePokemon.types
+  };
+  return pokemon;
+}
+
+function completePokemonFromJSON(entirePokemon){
   const pokemon = {
     name: entirePokemon.name,
     image: entirePokemon.sprites.front_default,
@@ -117,10 +136,10 @@ function generateTypesContent(types){
 
 // HTML Creation
 
-function createPokemonLi(pokemon){
-  console.log(pokemon);
+// Cria li que exibe informações simples do pokemon e linka para nova página
+function createSimplePokemonLi(pokemon){
   var anchorPokemon = document.createElement("a");
-  anchorPokemon.href = `pokemon/pokemon.html?${pokemon.id}`;
+  anchorPokemon.href = `pokemon/detailed-pokemon.html?${pokemon.id}`;
   var liPokemon = document.createElement("li");
   liPokemon.classList.add("card");
   const conteudoTr =
@@ -134,8 +153,17 @@ function createPokemonLi(pokemon){
   return anchorPokemon;
 }
 
-function addPokemonToList(pokemon){
-  var listaPokemons = document.querySelector("#pokemon-list");
-  listaPokemons.appendChild(createPokemonLi(pokemon));
+// popula container que exibe informações completas do pokemon
+function createCompletePokemonInfo(pokemon){
+  var containerInfo = 
+  `
+  <p id="id">#${pokemon.id}</p>
+  <p id="name">${pokemon.name}</p>
+  <img src="${pokemon.image}"></img>
+  <p id="types">${pokemon.types}</p>
+  `;
+  return containerInfo;
 }
+
+
 
