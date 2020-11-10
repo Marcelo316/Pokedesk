@@ -1,14 +1,29 @@
+#pokemon-list{
+  margin: 0 auto;
+  display: block;
+}
+
 .card {
-  width: 20%;
-  background-color:powderblue;
+  width: 30%;
+  background-color:#04a2ad;
   text-align: center;
-  padding: 20px;
-  margin: 10px;
+  padding: 10px;
+  margin: 20px 1%;
   display: inline-block;
   box-sizing: border-box;
   border-radius: 40px;
 }
 
 .card:hover{
-  background-color: red;
+  background-color:#08ddec;
+}
+
+.batch-container{
+  width: parent;
+}
+
+.batch{
+  width: 150px;
+  margin: 25px 0;
+  display: inline-block;
 }

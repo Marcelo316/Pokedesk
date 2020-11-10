@@ -8,7 +8,7 @@ function getNextPokemonPage(pageSize){
 // sessionStorage to the rescue!
 
 function storePokemonNames(){
-
+  
 };
 
 function storePokemonBatches(){
@@ -20,27 +20,33 @@ window.addEventListener("scroll", () =>{
   const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
   
   if(clientHeight + scrollTop > scrollHeight - 5){
-    //getNextPokemonPage(10)
+    getNextPokemonPage(10)
   }
 });
 
 var campoFiltro = document.getElementById("search-pokemon");
 campoFiltro.addEventListener("input", function(){
-  console.log(this.value);
-  var pokemons = document.querySelectorAll(".pokemon");
 
+  var pokemons = document.querySelectorAll(".pokemon");
   if(this.value.length > 0) {
+    var errorMsg = document.getElementById("error-not-found");
+    let atLeastOne = false;
     for(var i=0; i< pokemons.length; i++) {
       var pokemon = pokemons[i];
-      var tdNome = pokemon.querySelector(".nome");
-      var nome = tdNome.textContent;
+      var testedTag = pokemon.querySelector(".nome");
+      var testedValue = testedTag.textContent;
       var expressao = new RegExp(this.value,"i");
-      console.log(nome);
-      if(!expressao.test(nome)){
+      if(!expressao.test(testedValue)){
         pokemon.classList.add("invisivel");
       } else {
+        atLeastOne = true;
         pokemon.classList.remove("invisivel");
       }
+    }
+    if(atLeastOne) {
+      errorMsg.classList.add("invisivel");
+    } else {
+      errorMsg.classList.remove("invisivel");
     }
   } else {
     for(var i=0; i< pokemons.length; i++) {

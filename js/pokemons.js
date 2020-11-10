@@ -131,11 +131,31 @@ function completePokemonFromJSON(entirePokemon){
 }
 
 function generateTypesContent(types){
-  var texto = "";
-  types.forEach((element) => {
-    texto = texto + element.type.name + " ";
+  let batches = ``;
+  types.forEach(type => {
+    batches = batches + generateBatch(type)
   })
-  return texto;
+  return batches;
+}
+
+function generateBatch(batchJSON){
+  let batch = 
+  `
+  <div class="batch ${batchJSON.type.name}">
+    <div class="svg-container">${getIcon(capitalizeFirstLetter(batchJSON.type.name))}</div>
+    <p>${batchJSON.type.name}</p>
+  </div>
+  `;
+  return batch;
+}
+
+function getIcon(iconName){
+  //https://raw.githubusercontent.com/vinicoder/pokedex/master/src/assets/icons/types/
+  return 0;
+}
+
+function capitalizeFirstLetter(word){
+  return word.charAt(0).toUpperCase() + word.slice(1); 
 }
 
 // HTML Creation
@@ -150,13 +170,15 @@ function createSimplePokemonLi(pokemon){
   liPokemon.id = `pokemon${pokemon.id}`;
   const conteudoTr =
   `
-  <p>#${pokemon.id}</p><p class="nome">${pokemon.name}</p>
+  <p class="identif">#${pokemon.id}</p><p class="nome identif">${pokemon.name}</p>
   <img src="${pokemon.image}"></img>
-  <p>Types: ${generateTypesContent(pokemon.types)} </.p>
+  <div class="batch-container">
+    ${generateTypesContent(pokemon.types)}
+  </div>
   `
-  liPokemon.innerHTML = conteudoTr;
-  anchorPokemon.appendChild(liPokemon);
-  return anchorPokemon;
+  anchorPokemon.innerHTML = conteudoTr;
+  liPokemon.appendChild(anchorPokemon);
+  return liPokemon;
 }
 
 // popula container que exibe informações completas do pokemon
