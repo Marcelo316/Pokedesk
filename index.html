@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <!-- TODO
   requisitar pokemons em ordem
-  armazenar a informação de quais pokemons já foram solicitados
   Transmitir informação de ID adequadamente
-  definir informações importantes no detailed-pokemon
-  descobrir como criar caches de informações
+  armazenar a informação de quais pokemons já foram solicitados
+  implementar busca por nome
+  implementar busca por id
+  implementar aviso por não haver correspondência
+
   estilizar com flexbox
   melhorar loader
+
+  achar descriptions
 -->
 <html lang="pt-br" dir="ltr">
   <head>
@@ -15,10 +19,12 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/loading.css">
+    <link rel="stylesheet" href="./css/hider.css">
   </head>
   <body>
     <span id="error-msg" class="invisivel">Ocorreu algum erro ao requisitar os pokemons.</span>
     <div class="loader" id="loading-main"></div>
+    <input type="text" id="search-pokemon" name="search" placeholder="What pokémon are you looking for?">
     <ul id="pokemon-list">
       <li><div class="loader invisivel" id="loading-main"></div></li>
     </ul>

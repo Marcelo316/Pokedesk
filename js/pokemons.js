@@ -102,7 +102,7 @@ function displaySimplePokemon(pokemon){
 function displayCompletePokemon(pokemon){
   var completePokemon = completePokemonFromJSON(pokemon)
   var container = document.getElementById("pokemon-container");
-  container.innerHTML = createCompletePokemonInfo(completePokemon);
+  insertCompletePokemonInfo(completePokemon,container);
 }
   
 // Conversion 
@@ -119,10 +119,13 @@ function simplePokemonFromJSON(entirePokemon){
 
 function completePokemonFromJSON(entirePokemon){
   const pokemon = {
-    name: entirePokemon.name,
     image: entirePokemon.sprites.front_default,
     id: entirePokemon.id,
-    types: entirePokemon.types
+    name: entirePokemon.name,
+    weight: entirePokemon.weight,
+    height: entirePokemon.height,
+    types: entirePokemon.types,
+    description: "description?"
   };
   return pokemon;
 }
@@ -130,8 +133,9 @@ function completePokemonFromJSON(entirePokemon){
 function generateTypesContent(types){
   var texto = "";
   types.forEach((element) => {
-    texto += element + " ";
+    texto = texto + element.type.name + " ";
   })
+  return texto;
 }
 
 // HTML Creation
@@ -141,10 +145,12 @@ function createSimplePokemonLi(pokemon){
   var anchorPokemon = document.createElement("a");
   anchorPokemon.href = `pokemon/detailed-pokemon.html?${pokemon.id}`;
   var liPokemon = document.createElement("li");
+  liPokemon.classList.add("pokemon");
   liPokemon.classList.add("card");
+  liPokemon.id = `pokemon${pokemon.id}`;
   const conteudoTr =
   `
-  <p>#${pokemon.id}</p><p>${pokemon.name}</p>
+  <p>#${pokemon.id}</p><p class="nome">${pokemon.name}</p>
   <img src="${pokemon.image}"></img>
   <p>Types: ${generateTypesContent(pokemon.types)} </.p>
   `
@@ -154,15 +160,22 @@ function createSimplePokemonLi(pokemon){
 }
 
 // popula container que exibe informações completas do pokemon
-function createCompletePokemonInfo(pokemon){
-  var containerInfo = 
-  `
-  <p id="id">#${pokemon.id}</p>
-  <p id="name">${pokemon.name}</p>
-  <img src="${pokemon.image}"></img>
-  <p id="types">${pokemon.types}</p>
-  `;
-  return containerInfo;
+function insertCompletePokemonInfo(pokemon){
+  var image = document.getElementById("image");
+  var id = document.getElementById("id");
+  var name = document.getElementById("name");
+  var weight = document.getElementById("weight");
+  var height = document.getElementById("height");
+  var types = document.getElementById("types");
+  var description = document.getElementById("description");
+  
+  image.src = pokemon.image;
+  id.innerText = pokemon.id;
+  name.innerText = pokemon.name;
+  weight.innerText = pokemon.weight;
+  height.innerText = pokemon.height;
+  types.innerText = pokemon.types;
+  description.innerText = pokemon.description;
 }
 
 
