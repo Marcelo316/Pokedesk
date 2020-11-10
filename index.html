@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!-- TODO
+  requisitar pokemons em ordem
+  armazenar a informação de quais pokemons já foram solicitados
+  Transmitir informação de ID adequadamente
+  Separar xhr requisition de estilização
+  definir informações importantes no detailed-pokemon
+  descobrir como criar caches de informações
+  estilizar com flexbox
+-->
 <html lang="pt-br" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -13,6 +22,7 @@
     <ul id="pokemon-list">
       <li><div class="loader invisivel" id="loading-main"></div></li>
     </ul>
+    <div class="loader" id="loading-main"></div>
     <script src="./js/pokemons.js"></script>
     <script src="./js/index.js"></script>
   </body>
