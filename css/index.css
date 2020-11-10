@@ -1,3 +1,4 @@
+
 #pokemon-list{
   margin: 0 auto 50px auto;
   display: block;
@@ -16,7 +17,7 @@
 
 .card {
   width: 46%;
-  background-color:#04a2ad;
+  background-image: linear-gradient(to right, rgb(0,100,100) , rgb(0,100,10));
   text-align: center;
   margin: 20px 2%;
   display: inline-block;
@@ -29,14 +30,27 @@
 }
 
 .batch-container{
-  display: inline;
+  display: inline-block;
+  text-align: left;
+  width: 100%;
 }
 
 .batch{
-  width: 100px;
-  margin: 15px;
+  width: 38%;
+  margin: 4% 4% 4% 0;
+  padding: 2%;
   display: inline-block;
+  vertical-align: middle;
+  color: white;
   border-radius: 5px;
+}
+.batch svg, .batch div,.batch p{
+  height: 100%;
+  display: inline-block;
+  color: var(--card-background);
+  font-size: 15px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
 }
 
 .info-esquerda, .info-direita{
@@ -55,12 +69,14 @@
 .info-id{
   font-family: sans-serif;
   font-size: 30px;
+  color: white;
   text-transform: uppercase;
   text-align: left;
 }
 .info-nome{
   font-family: sans-serif;
   font-size: 25px;
+  color: white;
   text-transform: uppercase;
   text-align: left;
 }

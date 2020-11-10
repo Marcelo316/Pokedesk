@@ -1,12 +1,17 @@
 header{
     display: block;
-    background-color: rgb(199, 33, 33);
+    background-color: darkred;
     padding: 50px;
+}
+
+body{
+    background-color: darkcyan;
 }
 
 h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 82px;
+    color: white;
     text-align: center;
     display: block;
 }
@@ -35,9 +40,10 @@ h1{
     margin: 20px;
 }
 
-.info-detalhes td{
+.info-detalhes table td{
     padding: 4px 6px;
     font-size: 20px;
+    vertical-align: middle;
 }
 
 .info-descriptor{

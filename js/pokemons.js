@@ -144,7 +144,9 @@ function generateBatch(batchJSON){
   let batch = 
   `
   <div class="batch ${batchJSON.type.name}">
-    <div class="svg-container">${getIcon(capitalizeFirstLetter(batchJSON.type.name))}</div>
+    <div class="svg-container">
+      ${getIcon(capitalizeFirstLetter(batchJSON.type.name))}
+    </div>
     <p>${batchJSON.type.name}</p>
   </div>
   `;
@@ -198,12 +200,12 @@ function insertCompletePokemonInfo(pokemon){
   var description = document.getElementById("description");
   
   image.src = pokemon.image;
-  id.innerText = pokemon.id;
-  name.innerText = pokemon.name;
-  weight.innerText = pokemon.weight;
-  height.innerText = pokemon.height;
-  types.innerText = pokemon.types;
-  description.innerText = pokemon.description;
+  id.innerText += pokemon.id;
+  name.innerText += pokemon.name;
+  weight.innerText += pokemon.weight;
+  height.innerText += pokemon.height;
+  types.innerHTML = generateTypesContent(pokemon.types);
+  description.innerText += pokemon.description;
 }
 
 
