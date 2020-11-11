@@ -66,11 +66,13 @@ tr{
     font-size: 40px;
     margin-left: 30px;
     font-family: Archivo Narrow;
+    text-transform: uppercase;
 }
 #name{
     font-size: 30px;
     margin-left: 30px;
     font-family: Archivo Narrow;
+    text-transform: uppercase;
 }
 
 .batch{

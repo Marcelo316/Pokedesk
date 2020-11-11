@@ -17,7 +17,7 @@
 
 .card {
   width: 46%;
-  background-image: linear-gradient(to right, rgb(0,100,100) , rgb(0,100,10));
+  background-image: linear-gradient(to bottom left, #C04C4B ,#464646);
   text-align: center;
   margin: 20px 2%;
   display: inline-block;

@@ -1,17 +1,18 @@
 header{
     display: block;
-    background-color: darkred;
+    background-image: radial-gradient(circle,#6EA4BB,#7EA4BB);
     padding: 50px;
 }
 
 body{
-    background-color: darkcyan;
+    background-color: #F8EED3;
 }
 
 h1{
     font-family: 'PT Sans', sans-serif;
     font-size: 82px;
-    color: white;
+    color: #000000;
     text-align: center;
     display: block;
+    text-transform: capitalize;
 }

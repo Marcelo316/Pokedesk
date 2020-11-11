@@ -3,8 +3,6 @@
   requisitar pokemons em ordem
   armazenar a informação de quais pokemons já foram solicitados
 
-  melhorar loader
-
   achar descriptions
 -->
 <html lang="pt-br" dir="ltr">
@@ -12,6 +10,7 @@
     <meta charset="utf-8">
     <title>Pokedesk</title>
     <link href='https://fonts.googleapis.com/css?family=Archivo Narrow' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/types-color.css">
@@ -25,7 +24,7 @@
       <h1>Pokédesk</h1>
     </header>
 
-    <span id="error-msg" class="invisivel">Ocorreu algum erro ao requisitar os pokemons.</span>
+    <p id="error-fetch" class="invisivel">Ocorreu algum erro ao requisitar os pokemons.</p>
     <input type="text" id="search-pokemon" name="search" placeholder="What pokémon are you looking for?">
     <span id="error-not-found" class="invisivel">No matching pokémons. Try again.</span>
     <ul id="pokemon-list"></ul>

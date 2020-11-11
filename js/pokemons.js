@@ -61,7 +61,7 @@ function requestPokemon(id,loadingId,errorMsgId,errorClassName) {
 }
 
 function newGetPokemon(id,displayPokemon){
-  let pokemon = requestPokemon(id,"#loading-main","#error-msg","invisivel");
+  let pokemon = requestPokemon(id,"#loading-main","#error-fetch","invisivel");
   addPokemonToList(pokemon);
 }
 
@@ -70,7 +70,7 @@ function getPokemon(id,displayPokemon) {
 
   xhr.open("GET",`https://pokeapi.co/api/v2/pokemon/${id}`);
 
-  var errorMsg = document.querySelector("#error-msg");
+  var errorMsg = document.querySelector("#error-fetch");
   var loadingDiv = document.querySelector("#loading-main");
   
   xhr.addEventListener("load", function(){
