@@ -67,7 +67,7 @@ function getCompletePokemon(id) {
 
         let description = jsonSpecimen.flavor_text_entries[0].flavor_text;
         description = description.replace(/(\r\n|\n|\r)/gm," ");
-        description = description.replace(/(\u000c)/g," ");
+        description = description.replace(/(\u000c)/g,"");
         displayCompletePokemon(jsonPokemon,description);
       })
 
