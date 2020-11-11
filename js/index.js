@@ -20,7 +20,7 @@ function getNextPokemonPage(pageSize){
     offset = parseInt(sessionStorage.offset);
   }
   for(let i=1+offset;i<=pageSize+offset;i++){
-    const pokemon = getPokemon(i,displaySimplePokemon);
+    const pokemon = getSimplePokemon(i,displaySimplePokemon);
   }
   window.sessionStorage.setItem("offset",offset + pageSize)
 };

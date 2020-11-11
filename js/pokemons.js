@@ -4,23 +4,59 @@
 // Requests
 //----------
 
-function getPokemon(id,displayPokemon) {
+function getSimplePokemon(id) {
+  let jsonPokemon;
+  if(window.localStorage.getItem("pokemon" + id) !== null){
+    let strPokemon = window.localStorage.getItem("pokemon" + id);
+    jsonPokemon = JSON.parse(strPokemon);
+
+    displaySimplePokemon(jsonPokemon);
+  } else {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET",`https://pokeapi.co/api/v2/pokemon/${id}`);
+
+    var errorMsg = document.querySelector("#error-fetch");
+    var loadingDiv = document.querySelector("#loading-main");
+  
+    xhr.addEventListener("load", function(){
+      loadingDiv.classList.add("invisivel");
+      if(xhr.status == 200) {
+        errorMsg.classList.add("invisivel");
+
+        const resposta = xhr.responseText;
+        jsonPokemon = JSON.parse(resposta);
+        let simplePokemon = simplePokemonFromJSON(jsonPokemon);
+        
+        window.localStorage.setItem("pokemon" + jsonPokemon.id,JSON.stringify(simplePokemon));
+
+        displaySimplePokemon(simplePokemon);
+      } else {
+        errorMsg.classList.remove("invisivel");
+      }
+    });
+
+    xhr.send();
+  }
+}
+
+function getCompletePokemon(id) {
   var xhr = new XMLHttpRequest();
 
   xhr.open("GET",`https://pokeapi.co/api/v2/pokemon/${id}`);
 
   var errorMsg = document.querySelector("#error-fetch");
   var loadingDiv = document.querySelector("#loading-main");
-  
+
   xhr.addEventListener("load", function(){
     loadingDiv.classList.add("invisivel");
     if(xhr.status == 200) {
       errorMsg.classList.add("invisivel");
 
       const resposta = xhr.responseText;
-      const jsonPokemon = JSON.parse(resposta);
+      jsonPokemon = JSON.parse(resposta);
 
-      displayPokemon(jsonPokemon);
+      displayCompletePokemon(jsonPokemon);
     } else {
       errorMsg.classList.remove("invisivel");
     }
@@ -31,10 +67,9 @@ function getPokemon(id,displayPokemon) {
 }
 
 // Exibe pokemons simples em lista de id=="pokemon-list"
-function displaySimplePokemon(pokemon){
-  var simplePokemon = simplePokemonFromJSON(pokemon);
+function displaySimplePokemon(jsonPokemon){
   var pokemons = document.getElementById("pokemon-list");
-  pokemons.appendChild(createSimplePokemonLi(simplePokemon));
+  pokemons.appendChild(createSimplePokemonLi(jsonPokemon));
 }
 
 // Exibe pokemons completos em div de id=="pokemon-container"
@@ -83,6 +118,7 @@ function createSimplePokemonLi(pokemon){
   liPokemon.classList.add("pokemon");
   liPokemon.classList.add("card");
   liPokemon.id = `pokemon${pokemon.id}`;
+  console.log("Pokemon image: " + pokemon.image);                                                                  //DELETE THIS
   const conteudoTr =
   `
   <div class="info-esquerda">
@@ -141,8 +177,8 @@ function insertCompletePokemonInfo(pokemon){
   image.src = pokemon.image;
   id.innerText += pokemon.id;
   name.innerText += pokemon.name;
-  weight.innerText += pokemon.weight;
-  height.innerText += pokemon.height;
+  weight.innerText += ("" + pokemon.weight + " kg");
+  height.innerText += ("" + (pokemon.height/10) + " m");
   types.innerHTML = generateTypesContent(pokemon.types);
   description.innerText += pokemon.description;
 }
