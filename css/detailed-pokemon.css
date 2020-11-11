@@ -38,6 +38,23 @@
     vertical-align: top;
 }
 
+.info-line{
+    width: 20%;
+} 
+
+.info{
+    width: 70%;
+}
+
+#description{
+    font-size: 80%;
+    text-align: justify;
+}
+
+#description br{
+    color: red;
+}
+
 table, tbody, tr{
     display: block;
 }
@@ -54,8 +71,7 @@ tr{
 }
 
 .info{
-    display: inline-block;
-    width: 60%;
+    display: block;
 }
 
 #image{
