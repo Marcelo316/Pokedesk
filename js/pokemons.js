@@ -189,6 +189,9 @@ function createSimplePokemonLi(pokemon){
 
 // popula container que exibe informações completas do pokemon
 function insertCompletePokemonInfo(pokemon){
+  var title=document.querySelector("title");
+  title.innerText = pokemon.name;
+
   var image = document.getElementById("image");
   var id = document.getElementById("id");
   var name = document.getElementById("name");

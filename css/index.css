@@ -66,14 +66,14 @@
 }
 
 .info-id{
-  font-family: sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 30px;
   color: white;
   text-transform: uppercase;
   text-align: left;
 }
 .info-nome{
-  font-family: sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 25px;
   color: white;
   text-transform: uppercase;

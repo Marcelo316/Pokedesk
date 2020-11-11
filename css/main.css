@@ -9,56 +9,9 @@ body{
 }
 
 h1{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 82px;
     color: white;
     text-align: center;
     display: block;
 }
-
-.pokemon-container{
-    display: inline-block;
-    vertical-align: top;
-}
-
-.info-basico{
-    width: 40%;
-    display: inline-block;
-    text-align: left;
-    vertical-align: top;
-}
-
-.info-detalhes{
-    width: 59%;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.info-detalhes h2{
-    font-size: 30px;
-    text-align: center;
-    margin: 20px;
-}
-
-.info-detalhes table td{
-    padding: 4px 6px;
-    font-size: 20px;
-    vertical-align: middle;
-}
-
-.info-descriptor{
-    font-weight: bold;
-}
-
-#image{
-    width: 70%;
-}
-#id{
-    font-size: 40px;
-    margin-left: 30px;
-}
-#name{
-    font-size: 30px;
-    margin-left: 30px;
-}
-

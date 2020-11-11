@@ -2,11 +2,14 @@
 <html lang="pt-br" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Pokemon tal</title>
+    <title>Pokémon</title>
+    <link href='https://fonts.googleapis.com/css?family=Archivo Narrow' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/types-color.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/detailed-pokemon.css">
     <link rel="stylesheet" href="../css/loading.css">
     <link rel="stylesheet" href="../css/hider.css">
   </head>
@@ -32,27 +35,35 @@
           <tbody>
             <tr>
               <td class="info-line">
+                <p class="info-descriptor">Descrição:</p>
+              </td>
+              <td class="info"> 
+                <p id="description"></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="info-line">
                 <p class="info-descriptor">Peso:</p>
               </td>
-              <td><p id="weight"></p></td>
+              <td class="info"> 
+                <p id="weight"></p>
+              </td>
             </tr>
             <tr>
               <td class="info-line">
                 <p class="info-descriptor">Altura:</p>
               </td>
-              <td><p id="height"></p></td>
+              <td class="info"> 
+                <p id="height"></p>
+              </td>
             </tr>
             <tr>
               <td class="info-line">
                 <p class="info-descriptor">Tipos:</p>
               </td>
-              <td><div id=types></div></td>
-            </tr>
-            <tr>
-              <td class="info-line">
-                <p class="info-descriptor">Descrição:</p>
+              <td class="info"> 
+                <p id="types"></p>
               </td>
-              <td><p id="description"></p></td>
             </tr>
           </tbody>
         </table>
