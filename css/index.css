@@ -26,7 +26,8 @@
 }
 
 .card:hover{
-  background-color:#08ddec;
+  width: 48%;
+  margin: 20px 1%;
 }
 
 .batch-container{
