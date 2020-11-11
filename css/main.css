@@ -1,7 +1,8 @@
 header{
     display: block;
-    background-image: radial-gradient(circle,#6EA4BB,#7EA4BB);
+    background-image: radial-gradient(circle,#7EA4BB,#456877);
     padding: 50px;
+    text-shadow: 2px 2px 4px #3E748B;
 }
 
 body{
