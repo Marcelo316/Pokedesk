@@ -1,3 +1,8 @@
+
+//----------
+// Display
+//----------
+
 function getDetailedPokemonForPage(){
     let idString = window.location.search;
     const urlParams = new URLSearchParams(idString);

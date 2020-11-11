@@ -1,27 +1,8 @@
-function getNextPokemonPage(pageSize){
-  //still on progress, final format wont be in a for loop
-  let offset = 0;
-  if(window.sessionStorage.offset){
-    offset = parseInt(sessionStorage.offset);
-  }
-  for(let i=1+offset;i<=pageSize+offset;i++){
-    const pokemon = getPokemon(i,displaySimplePokemon);
-  }
-  window.sessionStorage.setItem("offset",offset + pageSize)
-};
-
-// sessionStorage to the rescue!
-
-function storePokemonNames(){
-  
-};
-
-function storePokemonBatches(){
-
-};
+//----------
+// Infinite Scroll
+//----------
 
 window.addEventListener("scroll", () =>{
-  //logic for infinite scroll goes here
   const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
   
   let loadingDiv = document.getElementById("loading-main");
@@ -32,6 +13,21 @@ window.addEventListener("scroll", () =>{
     loadingDiv.classList.add("invisivel");
   }
 });
+
+function getNextPokemonPage(pageSize){
+  let offset = 0;
+  if(window.sessionStorage.offset){
+    offset = parseInt(sessionStorage.offset);
+  }
+  for(let i=1+offset;i<=pageSize+offset;i++){
+    const pokemon = getPokemon(i,displaySimplePokemon);
+  }
+  window.sessionStorage.setItem("offset",offset + pageSize)
+};
+
+//----------
+// Search
+//----------
 
 var campoFiltro = document.getElementById("search-pokemon");
 campoFiltro.addEventListener("input", function(){

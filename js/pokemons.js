@@ -1,69 +1,8 @@
-// const P = new Pokedex.Pokedex();
-//
-// const listarPokemon = (nome) => {
-//   return P.getPokemonByName(nome)
-// }
-//
-// const linhaPokemon = (nome, ordem, peso) => {
-//   const linha = document.createElement('tr');
-//   const conteudoLinha =
-//   `
-//   <td>${nome}</td>
-//   <td>${ordem}</td>
-//   <td>${peso}</td>
-//   `
-//   linha.innerHTML = conteudoLinha;
-//   return linha;
-// }
-//
-// const adicionaPokemon = (nome) =>{
-//   const corpoTabela = document.querySelector("[conteudo-pokemon]")
-//
-//   listarPokemon(nome).then( result => {
-//     corpoTabela.appendChild(linhaPokemon(result.name, result.order, result.weight));
-//   })
-// }
-//
-// adicionaPokemon('eevee')
-// adicionaPokemon('pikachu')
-// adicionaPokemon('bulbasaur')
-
-//-----------------------------------------------------------------------------------
-
 // Dois tipos de exibição de Pokemon - Simples e Completa
 
+//----------
 // Requests
-
-function requestPokemon(id,loadingId,errorMsgId,errorClassName) {
-  var xhr = new XMLHttpRequest();
-
-  xhr.open("GET",`https://pokeapi.co/api/v2/pokemon/${id}`);
-
-  var errorMsg = document.querySelector(errorMsgId);
-  var loadingDiv = document.querySelector(loadingId);
-
-  xhr.addEventListener("load", function(){
-    loadingDiv.classList.add(errorClassName);
-    if(xhr.status == 200) {
-      errorMsg.classList.add(errorClassName);
-
-      const resposta = xhr.responseText;
-      const jsonPokemon = JSON.parse(resposta);
-      const pokemon = pokemonFromJSON(jsonPokemon);
-
-      return pokemon;
-
-    } else {
-      errorMsg.classList.remove(errorClassName);
-    }
-
-  });
-}
-
-function newGetPokemon(id,displayPokemon){
-  let pokemon = requestPokemon(id,"#loading-main","#error-fetch","invisivel");
-  addPokemonToList(pokemon);
-}
+//----------
 
 function getPokemon(id,displayPokemon) {
   var xhr = new XMLHttpRequest();
@@ -105,7 +44,9 @@ function displayCompletePokemon(pokemon){
   insertCompletePokemonInfo(completePokemon,container);
 }
   
+//----------
 // Conversion 
+//----------
 
 function simplePokemonFromJSON(entirePokemon){
   const pokemon = {
@@ -130,35 +71,9 @@ function completePokemonFromJSON(entirePokemon){
   return pokemon;
 }
 
+//----------
 // HTML Creation
-
-function generateTypesContent(types){
-  let batches = ``;
-  types.forEach(type => {
-    batches = batches + generateBatch(type)
-  })
-  return batches;
-}
-
-function generateBatch(batchJSON){
-  let batch = 
-  `
-  <div class="batch ${batchJSON.type.name}">
-    <img src="https://raw.githubusercontent.com/vinicoder/pokedex/master/src/assets/icons/types/${capitalizeFirstLetter(batchJSON.type.name)}.svg" class="svg-container">
-    <p class="type-name">${batchJSON.type.name}</p>
-  </div>
-  `;
-  return batch;
-}
-
-function getSVGlink(iconName){
-  https://raw.githubusercontent.com/vinicoder/pokedex/master/src/assets/icons/types/
-  return 0;
-}
-
-function capitalizeFirstLetter(word){
-  return word.charAt(0).toUpperCase() + word.slice(1); 
-}
+//----------
 
 // Cria li que exibe informações simples do pokemon e linka para nova página
 function createSimplePokemonLi(pokemon){
@@ -185,6 +100,29 @@ function createSimplePokemonLi(pokemon){
   liPokemon.innerHTML = conteudoTr;
   anchorPokemon.appendChild(liPokemon);
   return anchorPokemon;
+}
+
+function generateTypesContent(types){
+  let batches = ``;
+  types.forEach(type => {
+    batches = batches + generateBatch(type)
+  })
+  return batches;
+}
+
+function generateBatch(batchJSON){
+  let batch = 
+  `
+  <div class="batch ${batchJSON.type.name}">
+    <img src="https://raw.githubusercontent.com/vinicoder/pokedex/master/src/assets/icons/types/${capitalizeFirstLetter(batchJSON.type.name)}.svg" class="svg-container">
+    <p class="type-name">${batchJSON.type.name}</p>
+  </div>
+  `;
+  return batch;
+}
+
+function capitalizeFirstLetter(word){
+  return word.charAt(0).toUpperCase() + word.slice(1); 
 }
 
 // popula container que exibe informações completas do pokemon
