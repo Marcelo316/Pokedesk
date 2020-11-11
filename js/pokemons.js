@@ -144,17 +144,15 @@ function generateBatch(batchJSON){
   let batch = 
   `
   <div class="batch ${batchJSON.type.name}">
-    <div class="svg-container">
-      ${getIcon(capitalizeFirstLetter(batchJSON.type.name))}
-    </div>
-    <p>${batchJSON.type.name}</p>
+    <img src="https://raw.githubusercontent.com/vinicoder/pokedex/master/src/assets/icons/types/${capitalizeFirstLetter(batchJSON.type.name)}.svg" class="svg-container">
+    <p class="type-name">${batchJSON.type.name}</p>
   </div>
   `;
   return batch;
 }
 
-function getIcon(iconName){
-  //https://raw.githubusercontent.com/vinicoder/pokedex/master/src/assets/icons/types/
+function getSVGlink(iconName){
+  https://raw.githubusercontent.com/vinicoder/pokedex/master/src/assets/icons/types/
   return 0;
 }
 

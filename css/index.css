@@ -36,9 +36,8 @@
 }
 
 .batch{
-  width: 38%;
   margin: 4% 4% 4% 0;
-  padding: 2%;
+  padding: 5px 10px;
   display: inline-block;
   vertical-align: middle;
   color: white;
@@ -79,4 +78,13 @@
   color: white;
   text-transform: uppercase;
   text-align: left;
+}
+
+.svg-container{
+  padding: 4px;
+}
+
+.svg-container, .type-name{
+  display: inline-block;
+  vertical-align: middle;
 }
