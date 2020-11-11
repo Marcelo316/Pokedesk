@@ -56,7 +56,20 @@ function getCompletePokemon(id) {
       const resposta = xhr.responseText;
       jsonPokemon = JSON.parse(resposta);
 
-      displayCompletePokemon(jsonPokemon);
+      let newRequestURL = jsonPokemon.species.url;
+      let xhr2 = new XMLHttpRequest();
+
+      xhr2.open("GET",newRequestURL);
+
+      xhr2.addEventListener("load",function(){
+        let resposta2 = xhr2.responseText;
+        let jsonSpecimen = JSON.parse(resposta2);
+
+        let description = jsonSpecimen.flavor_text_entries[0].flavor_text;
+        displayCompletePokemon(jsonPokemon,description);
+      })
+
+      xhr2.send();
     } else {
       errorMsg.classList.remove("invisivel");
     }
@@ -73,8 +86,8 @@ function displaySimplePokemon(jsonPokemon){
 }
 
 // Exibe pokemons completos em div de id=="pokemon-container"
-function displayCompletePokemon(pokemon){
-  var completePokemon = completePokemonFromJSON(pokemon)
+function displayCompletePokemon(pokemon,description){
+  var completePokemon = completePokemonFromJSON(pokemon,description)
   var container = document.getElementById("pokemon-container");
   insertCompletePokemonInfo(completePokemon,container);
 }
@@ -93,7 +106,7 @@ function simplePokemonFromJSON(entirePokemon){
   return pokemon;
 }
 
-function completePokemonFromJSON(entirePokemon){
+function completePokemonFromJSON(entirePokemon,simpleDescription){
   const pokemon = {
     image: entirePokemon.sprites.front_default,
     id: entirePokemon.id,
@@ -101,7 +114,7 @@ function completePokemonFromJSON(entirePokemon){
     weight: entirePokemon.weight,
     height: entirePokemon.height,
     types: entirePokemon.types,
-    description: "description?"
+    description: simpleDescription
   };
   return pokemon;
 }
@@ -118,7 +131,6 @@ function createSimplePokemonLi(pokemon){
   liPokemon.classList.add("pokemon");
   liPokemon.classList.add("card");
   liPokemon.id = `pokemon${pokemon.id}`;
-  console.log("Pokemon image: " + pokemon.image);                                                                  //DELETE THIS
   const conteudoTr =
   `
   <div class="info-esquerda">
