@@ -20,7 +20,8 @@
     margin: 2% 4% 0 4%;
     padding: 10px;
     border-radius: 5px;
-    background-image: linear-gradient(to right top, #4BC04C ,#464646);
+    background-image: linear-gradient(to bottom left, #C04C4B ,#464646);
+    color: white;
 }
 
 .info-detalhes h2{
