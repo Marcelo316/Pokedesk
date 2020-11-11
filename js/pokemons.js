@@ -191,7 +191,7 @@ function insertCompletePokemonInfo(pokemon){
   image.src = pokemon.image;
   id.innerText += pokemon.id;
   name.innerText += pokemon.name;
-  weight.innerText += ("" + pokemon.weight + " kg");
+  weight.innerText += ("" + pokemon.weight*0.1 + " kg");
   height.innerText += ("" + (pokemon.height/10) + " m");
   types.innerHTML = generateTypesContent(pokemon.types);
   description.innerText += pokemon.description;
